@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/biblioteca-backend.iml" filepath="$PROJECT_DIR$/.idea/biblioteca-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gpt/gpt.iml" filepath="$PROJECT_DIR$/gpt/gpt.iml" />
+    </modules>
+  </component>
+</project>
