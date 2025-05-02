@@ -1,20 +1,18 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
-
-const API_URL = 'http://localhost:8080/api/libros'
+import { getLibros, createLibro } from './api/libros'
+import LibroForm from './components/LibroForm'
+import LibroList from './components/LibroList'
 
 function App() {
   const [libros, setLibros] = useState([])
-  const [nuevoLibro, setNuevoLibro] = useState({ titulo: '', autor: '', anio: '' })
 
   const cargarLibros = async () => {
-    const res = await axios.get(API_URL)
+    const res = await getLibros()
     setLibros(res.data)
   }
 
-  const agregarLibro = async () => {
-    await axios.post(API_URL, nuevoLibro)
-    setNuevoLibro({ titulo: '', autor: '', anio: '' })
+  const agregarLibro = async (libro) => {
+    await createLibro(libro)
     cargarLibros()
   }
 
@@ -23,18 +21,10 @@ function App() {
   }, [])
 
   return (
-    <div>
-      <h1>Biblioteca</h1>
-      <input placeholder="Título" value={nuevoLibro.titulo} onChange={e => setNuevoLibro({...nuevoLibro, titulo: e.target.value})} />
-      <input placeholder="Autor" value={nuevoLibro.autor} onChange={e => setNuevoLibro({...nuevoLibro, autor: e.target.value})} />
-      <input placeholder="Año" value={nuevoLibro.anio} onChange={e => setNuevoLibro({...nuevoLibro, anio: e.target.value})} />
-      <button onClick={agregarLibro}>Agregar</button>
-
-      <ul>
-        {libros.map(libro => (
-          <li key={libro.id}>{libro.titulo} - {libro.autor} ({libro.anio})</li>
-        ))}
-      </ul>
+    <div className='w-full h-full grid grid-cols-1 gap-4 p-4 place-items-center'>  
+      <h1 className='text-5xl'>Biblioteca</h1>
+      <LibroForm onAdd={agregarLibro} />
+      <LibroList libros={libros} />
     </div>
   )
 }
