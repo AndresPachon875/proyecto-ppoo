@@ -1,8 +1,10 @@
+import LibroItem from "./libro/LibroItem"
+
 function LibroList({ libros }) {
     return (
       <ul>
         {libros.map(libro => (
-          <li key={libro.id}>{libro.titulo} - {libro.autor} ({libro.anio})</li>
+          <LibroItem key={libro.id} libro={libro}></LibroItem>
         ))}
       </ul>
     )
