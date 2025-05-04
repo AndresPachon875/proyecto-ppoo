@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GptApplication {
+public class bibliotecaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GptApplication.class, args);
+		SpringApplication.run(bibliotecaApplication.class, args);
 	}
 
 }
