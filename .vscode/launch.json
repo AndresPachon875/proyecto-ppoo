@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-bibliotecaApplication<gpt>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.biblioteca.crud.bibliotecaApplication",
+            "projectName": "gpt",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

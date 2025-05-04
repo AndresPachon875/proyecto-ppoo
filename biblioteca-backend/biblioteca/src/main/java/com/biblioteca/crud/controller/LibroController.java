@@ -1,5 +1,6 @@
 package com.biblioteca.crud.controller;
 
+
 import com.biblioteca.crud.model.Libro;
 import com.biblioteca.crud.repository.LibroRepository;
 import org.springframework.web.bind.annotation.*;
@@ -37,4 +38,10 @@ public class LibroController {
     public void eliminarLibro(@PathVariable Long id) {
         repo.deleteById(id);
     }
+
+    @GetMapping("/buscar")
+    public List<Libro> buscarLibrosPorNombre(@RequestParam("q") String palabra) {
+    return repo.findByTituloContainingIgnoreCase(palabra);
+    }
+
 }
