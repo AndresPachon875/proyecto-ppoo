@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { getLibros, createLibro } from './api/libros'
 import LibroForm from './components/LibroForm'
 import LibroList from './components/LibroList'
+import Navbar from './components/Navbar'
 
 function App() {
   const [libros, setLibros] = useState([])
@@ -21,11 +22,14 @@ function App() {
   }, [])
 
   return (
-    <div className='w-full h-full grid grid-cols-1 gap-4 p-4 place-items-center'>  
+    <main className='container font-serif mx-auto'>
+    <Navbar  />
+      <div className='w-full h-full grid grid-cols-1 gap-4 p-4 place-items-center'>  
       <h1 className='text-5xl'>Biblioteca</h1>
       <LibroForm onAdd={agregarLibro} />
       <LibroList libros={libros} />
     </div>
+    </main>
   )
 }
 
