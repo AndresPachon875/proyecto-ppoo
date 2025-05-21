@@ -11,6 +11,7 @@ public class Libro {
     private String titulo;
     private String autor;
     private int anio;
+    private String portada;
 
     // Getters y Setters
 
@@ -46,5 +47,14 @@ public class Libro {
     public void setAnio(int anio) {
         this.anio = anio;
     }
+
+    public String getPortada() {
+        return portada;
+    }
+    
+    public void setPortada(String portada) {
+        this.portada = portada;
+    }
+    
 }
 

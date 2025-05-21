@@ -1,98 +1,87 @@
 import { useState } from "react";
 
 function LibroForm({ onAdd }) {
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [year, setYear] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState(null);
-  const [error, setError] = useState("");
+  const [nuevoLibro, setNuevoLibro] = useState({
+    titulo: '',
+    autor: '',
+    anio: '',
+    portada: null
+  })
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const [vistaPrevia, setVistaPrevia] = useState(null)
 
-    if (!title || !author || !year) {
-      setError("Por favor, completa todos los campos obligatorios.");
-      return;
+  const handleChange = (e) => {
+    const { name, value, files } = e.target
+    if (name === 'portada') {
+      const archivo = files[0]
+      setNuevoLibro({ ...nuevoLibro, portada: archivo })
+
+      if (archivo) {
+        const reader = new FileReader()
+        reader.onloadend = () => setVistaPrevia(reader.result)
+        reader.readAsDataURL(archivo)
+      } else {
+        setVistaPrevia(null)
+      }
+    } else {
+      setNuevoLibro({ ...nuevoLibro, [name]: value })
     }
+  }
 
-    const formData = new FormData();
-    formData.append("titulo", title);
-    formData.append("autor", author);
-    formData.append("anio", year);
-    formData.append("descripcion", description);
-    if (image) {
-      formData.append("portada", image);
-    }
-
-    try {
-      await onAdd(formData);
-      // Limpiar formulario
-      setTitle("");
-      setAuthor("");
-      setYear("");
-      setDescription("");
-      setImage(null);
-      setError("");
-    } catch (err) {
-      setError("Ocurrió un error al guardar el libro.");
-    }
-  };
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log("Enviando libro:", nuevoLibro)
+    onAdd(nuevoLibro)
+    setNuevoLibro({ titulo: '', autor: '', anio: '', portada: null })
+    setVistaPrevia(null)
+    e.target.reset()
+  }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="p-4 space-y-4 bg-white rounded shadow-md"
-    >
-      <h2 className="text-xl font-semibold">Agregar nuevo libro</h2>
-
-      {error && <p className="text-red-500">{error}</p>}
-
+    <form onSubmit={handleSubmit} className="space-y-3 w-full max-w-md">
       <input
-        type="text"
+        name="titulo"
         placeholder="Título"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        className="w-full border p-2 rounded"
+        value={nuevoLibro.titulo}
+        onChange={handleChange}
+        className="border p-2 w-full"
         required
       />
       <input
-        type="text"
+        name="autor"
         placeholder="Autor"
-        value={author}
-        onChange={(e) => setAuthor(e.target.value)}
-        className="w-full border p-2 rounded"
+        value={nuevoLibro.autor}
+        onChange={handleChange}
+        className="border p-2 w-full"
         required
       />
       <input
-        type="number"
+        name="anio"
         placeholder="Año"
-        value={year}
-        onChange={(e) => setYear(e.target.value)}
-        className="w-full border p-2 rounded"
+        value={nuevoLibro.anio}
+        onChange={handleChange}
+        type="number"
+        className="border p-2 w-full"
         required
       />
-      <textarea
-        placeholder="Descripción"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        className="w-full border p-2 rounded"
-      />
       <input
+        name="portada"
         type="file"
         accept="image/*"
-        onChange={(e) => setImage(e.target.files[0])}
-        className="w-full"
+        onChange={handleChange}
+        className="border p-2 w-full"
       />
-
-      <button
-        type="submit"
-        className="bg-indigo-600 text-white px-4 py-2 rounded"
-      >
+      {vistaPrevia && (
+        <div className="mt-2">
+          <p className="text-sm text-gray-600">Vista previa:</p>
+          <img src={vistaPrevia} alt="Vista previa de la portada" className="max-w-[200px] border mt-1" />
+        </div>
+      )}
+      <button type="submit" className="bg-indigo-600 text-white px-4 py-2 rounded">
         Agregar
       </button>
     </form>
   );
 }
 
-export default LibroForm;
+export default LibroForm
