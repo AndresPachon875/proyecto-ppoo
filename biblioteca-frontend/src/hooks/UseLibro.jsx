@@ -1,23 +1,30 @@
 import { useEffect, useState } from 'react'
-import { getLibros, createLibro, updateLibro, deleteLibro, buscarLibros } from '../api/libros'
+import {
+  getLibros,
+  createLibro,
+  updateLibro,
+  deleteLibro,
+  buscarLibros
+} from '../api/libros.js'
 
 export function useLibros() {
   const [libros, setLibros] = useState([])
-  const [busqueda, setBusqueda] = useState("")
+  const [busqueda, setBusqueda] = useState('')
+
+  useEffect(() => {
+    cargarLibros()
+  }, [])
 
   const cargarLibros = async () => {
     const res = await getLibros()
     setLibros(res.data)
   }
 
-  const buscar = async (valor) => {
-    setBusqueda(valor)
-    if (valor.trim() === "") {
-      cargarLibros()
-    } else {
-      const res = await buscarLibros(valor)
-      setLibros(res.data)
-    }
+  const buscar = async (texto) => {
+    setBusqueda(texto)
+    if (texto === '') return cargarLibros()
+    const res = await buscarLibros(texto)
+    setLibros(res.data)
   }
 
   const agregarLibro = async (libro) => {
@@ -25,24 +32,23 @@ export function useLibros() {
     cargarLibros()
   }
 
-  const editarLibro = async (id, datosActualizados) => {
-    await updateLibro(id, datosActualizados)
+  const editarLibro = async (libro) => {
+    await updateLibro(libro.id, libro)
     cargarLibros()
   }
 
-  const eliminarLibro = async (id) => {
-    await deleteLibro(id)
+  const eliminarLibro = async (libro) => {
+    console.log('Eliminando libro con id:', id);
+    const confirmar = confirm(`¿Eliminar el libro "${libro.titulo}"?`)
+    console.log(confirmar)
+    if (confirmar) return
+    await deleteLibro(libro.id)
     cargarLibros()
   }
-
-  useEffect(() => {
-    cargarLibros()
-  }, [])
 
   return {
     libros,
     busqueda,
-    setBusqueda,
     buscar,
     agregarLibro,
     editarLibro,

@@ -28,8 +28,10 @@ export const createLibro = (libro) => {
   })
 }
 
+export const getLibroById = (id) => axios.get(`${API_URL}/${id}`);
+
 export const buscarLibros = (query) =>
   axios.get(`http://localhost:8080/api/libros/buscar?q=${query}`)
 
   
-  export const deleteLibro = (id) => axios.delete(`${API_URL}/${id}`)
+export const deleteLibro = (id) => axios.delete(`${API_URL}/${id}`)

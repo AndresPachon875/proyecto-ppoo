@@ -40,7 +40,6 @@ public Libro agregarLibro(
     libro.setAnio(Integer.parseInt(anioStr));
 
     if (portadaFile != null && !portadaFile.isEmpty()) {
-        // ✅ Ruta absoluta segura en tu proyecto
         String rutaBase = System.getProperty("user.dir") + File.separator + "uploads";
         File directorio = new File(rutaBase);
         if (!directorio.exists()) {

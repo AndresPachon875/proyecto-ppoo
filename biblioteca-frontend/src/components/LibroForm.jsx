@@ -1,87 +1,106 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function LibroForm({ onAdd }) {
-  const [nuevoLibro, setNuevoLibro] = useState({
+function LibroForm({ onAdd, libroInicial = null, modo = "crear" }) {
+  const [libro, setLibro] = useState({
     titulo: '',
     autor: '',
     anio: '',
+    descripcion: '',
     portada: null
-  })
+  });
 
-  const [vistaPrevia, setVistaPrevia] = useState(null)
+  const [vistaPrevia, setVistaPrevia] = useState(null);
+
+  useEffect(() => {
+    if (libroInicial) {
+      setLibro({
+        titulo: libroInicial.titulo || '',
+        autor: libroInicial.autor || '',
+        anio: libroInicial.anio || '',
+        descripcion: libroInicial.descripcion || '',
+        portada: null // no cargamos archivo, solo permitimos cambiar
+      });
+      if (libroInicial.portada) {
+        setVistaPrevia(`http://localhost:8080/${libroInicial.portada}`);
+      }
+    }
+  }, [libroInicial]);
 
   const handleChange = (e) => {
-    const { name, value, files } = e.target
-    if (name === 'portada') {
-      const archivo = files[0]
-      setNuevoLibro({ ...nuevoLibro, portada: archivo })
+    const { name, value, files } = e.target;
+    if (name === "portada") {
+      const archivo = files[0];
+      setLibro({ ...libro, portada: archivo });
 
       if (archivo) {
-        const reader = new FileReader()
-        reader.onloadend = () => setVistaPrevia(reader.result)
-        reader.readAsDataURL(archivo)
+        const reader = new FileReader();
+        reader.onloadend = () => setVistaPrevia(reader.result);
+        reader.readAsDataURL(archivo);
       } else {
-        setVistaPrevia(null)
+        setVistaPrevia(null);
       }
     } else {
-      setNuevoLibro({ ...nuevoLibro, [name]: value })
+      setLibro({ ...libro, [name]: value });
     }
-  }
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log("Enviando libro:", nuevoLibro)
-    onAdd(nuevoLibro)
-    setNuevoLibro({ titulo: '', autor: '', anio: '', portada: null })
-    setVistaPrevia(null)
-    e.target.reset()
-  }
+    e.preventDefault();
+    onAdd(libro);
+  };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3 w-full max-w-md">
+    <form onSubmit={handleSubmit} className="space-y-4 bg-white shadow p-6 rounded-md">
       <input
         name="titulo"
         placeholder="Título"
-        value={nuevoLibro.titulo}
+        value={libro.titulo}
         onChange={handleChange}
-        className="border p-2 w-full"
+        className="border border-indigo-300 p-2 w-full rounded"
         required
       />
       <input
         name="autor"
         placeholder="Autor"
-        value={nuevoLibro.autor}
+        value={libro.autor}
         onChange={handleChange}
-        className="border p-2 w-full"
+        className="border border-indigo-300 p-2 w-full rounded"
         required
       />
       <input
         name="anio"
         placeholder="Año"
-        value={nuevoLibro.anio}
+        value={libro.anio}
         onChange={handleChange}
         type="number"
-        className="border p-2 w-full"
+        className="border border-indigo-300 p-2 w-full rounded"
         required
+      />
+      <textarea
+        name="descripcion"
+        placeholder="Descripción"
+        value={libro.descripcion}
+        onChange={handleChange}
+        className="border border-indigo-300 p-2 w-full rounded"
       />
       <input
         name="portada"
         type="file"
         accept="image/*"
         onChange={handleChange}
-        className="border p-2 w-full"
+        className="border border-indigo-300 p-2 w-full rounded"
       />
       {vistaPrevia && (
-        <div className="mt-2">
+        <div>
           <p className="text-sm text-gray-600">Vista previa:</p>
-          <img src={vistaPrevia} alt="Vista previa de la portada" className="max-w-[200px] border mt-1" />
+          <img src={vistaPrevia} alt="Vista previa" className="max-w-[200px] border mt-1" />
         </div>
       )}
-      <button type="submit" className="bg-indigo-600 text-white px-4 py-2 rounded">
-        Agregar
+      <button type="submit" className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded">
+        {modo === "editar" ? "Actualizar" : "Agregar"}
       </button>
     </form>
   );
 }
 
-export default LibroForm
+export default LibroForm;
