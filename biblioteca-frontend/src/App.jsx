@@ -2,6 +2,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import CrearLibro from './pages/CrearLibro';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import EditarLibroPage from './pages/EditarLibroPage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/crear" element={<CrearLibro />} />
+            <Route path="/editar/:id" element={<EditarLibroPage />} />
           </Routes>
         </div>
       </main>

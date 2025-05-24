@@ -1,15 +1,21 @@
-import { useLibros } from '../hooks/useLibro';
+import { useLibros } from '../hooks/UseLibro.jsx';
 import LibroList from '../components/LibroList';
 import SearchBar from '../components/SearchBar';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+
+  const navigate = useNavigate();
   const {
     libros,
     busqueda,
     buscar,
-    editarLibro,
-    eliminarLibro
+    eliminarLibro,
   } = useLibros();
+
+  const editarLibro = (libro) => {
+    navigate(`/editar/${libro.id}`);
+  }
 
   return (
     <section className="space-y-6 max-w-4xl mx-auto">

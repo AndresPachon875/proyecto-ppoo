@@ -1,38 +1,47 @@
+import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { getLibroById, updateLibro } from '../services/libroService';
+import { getLibroById, updateLibro } from '../api/libros'; // asegúrate de tener esta función
 import LibroForm from '../components/LibroForm';
 
-function EditarLibroPage() {
+function EditarLibro() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [libro, setLibro] = useState(null);
+  const [libroActual, setLibroActual] = useState(null);
 
   useEffect(() => {
-    getLibroById(id)
-      .then((res) => setLibro(res.data))
-      .catch(() => navigate('/'));
-  }, [id, navigate]);
+    const fetchLibro = async () => {
+      try {
+        const { data } = await getLibroById(id);
+        setLibroActual(data);
+      } catch (error) {
+        console.error('Error al obtener el libro:', error);
+      }
+    };
 
-  const handleUpdate = async (datosActualizados) => {
+    fetchLibro();
+  }, [id]);
+
+  const handleActualizar = async (libroEditado) => {
     try {
-      await updateLibro(id, datosActualizados);
-      navigate('/');
+      await updateLibro(id, libroEditado);
+      navigate('/'); // redirige después de actualizar
     } catch (error) {
-      console.error('Error al actualizar:', error);
+      console.error('Error al actualizar el libro:', error);
     }
   };
 
+  if (!libroActual) return <p className="text-center mt-10">Cargando libro...</p>;
+
   return (
-    <div className="p-6 max-w-xl mx-auto">
-      <h2 className="text-3xl font-semibold mb-4">Editar Libro</h2>
-      {libro ? (
-        <LibroForm onAdd={handleUpdate} libroInicial={libro} modo="editar" />
-      ) : (
-        <p>Cargando...</p>
-      )}
-    </div>
+    <section className="grid place-items-center bg-gray-100">
+      <h2 className="text-3xl font-bold text-indigo-700 mb-6">Editar Libro</h2>
+      <LibroForm
+        libroInicial={libroActual}
+        modo="editar"
+        onAdd={handleActualizar}
+      />
+    </section>
   );
 }
 
-export default EditarLibroPage;
+export default EditarLibro;

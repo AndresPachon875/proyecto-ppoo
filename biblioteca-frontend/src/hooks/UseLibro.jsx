@@ -4,7 +4,8 @@ import {
   createLibro,
   updateLibro,
   deleteLibro,
-  buscarLibros
+  buscarLibros,
+  getLibroById
 } from '../api/libros.js'
 
 export function useLibros() {
@@ -17,6 +18,11 @@ export function useLibros() {
 
   const cargarLibros = async () => {
     const res = await getLibros()
+    setLibros(res.data)
+  }
+
+  const cargarLibroPorId = async (id) => {
+    const res = await getLibroById(id)
     setLibros(res.data)
   }
 
@@ -37,14 +43,16 @@ export function useLibros() {
     cargarLibros()
   }
 
-  const eliminarLibro = async (libro) => {
-    console.log('Eliminando libro con id:', id);
-    const confirmar = confirm(`¿Eliminar el libro "${libro.titulo}"?`)
-    console.log(confirmar)
-    if (confirmar) return
-    await deleteLibro(libro.id)
-    cargarLibros()
+  const eliminarLibro = async (id) => {
+  console.log('Intentando eliminar libro con ID:', id); // 👈 Imprime esto
+  try {
+    await deleteLibro(id); 
+    setLibros((prev) => prev.filter((libro) => libro.id !== id));
+  } catch (error) {
+    console.error('Error al eliminar libro:', error);
+    alert('No se pudo eliminar el libro');
   }
+};
 
   return {
     libros,
@@ -52,6 +60,7 @@ export function useLibros() {
     buscar,
     agregarLibro,
     editarLibro,
-    eliminarLibro
+    eliminarLibro,
+    cargarLibroPorId,
   }
 }

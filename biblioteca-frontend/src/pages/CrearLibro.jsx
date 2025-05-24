@@ -1,5 +1,5 @@
 import LibroForm from '../components/LibroForm';
-import { useLibros } from '../hooks/useLibro';
+import { useLibros } from '../hooks/UseLibro.jsx';
 import { useNavigate } from 'react-router-dom';
 
 function CrearLibro() {
@@ -12,7 +12,7 @@ function CrearLibro() {
   };
 
   return (
-    <section className="flex flex-col items-center">
+    <section className="grid place-items-center bg-gray-100">
       <h2 className="text-3xl font-bold text-indigo-700 mb-6">Crear Nuevo Libro</h2>
       <LibroForm onAdd={handleAgregar} />
     </section>
