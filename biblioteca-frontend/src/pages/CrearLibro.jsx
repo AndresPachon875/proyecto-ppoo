@@ -1,21 +1,23 @@
-import LibroForm from '../components/LibroForm';
-import { useLibros } from '../hooks/useLibro';
 import { useNavigate } from 'react-router-dom';
+import LibroForm from '../components/LibroForm';
+import { useLibros } from '../hooks/UseLibro'; 
 
 function CrearLibro() {
-  const { agregarLibro } = useLibros();
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
+  const { agregarLibro } = useLibros(); 
 
-  const handleAgregar = async (nuevoLibro) => {
-    await agregarLibro(nuevoLibro);
-    navigate('/'); // Redirige al Home al crear
+  const handleAdd = async (nuevoLibro) => {
+    await agregarLibro(nuevoLibro); 
+    navigate('/'); 
   };
 
   return (
-    <section className="flex flex-col items-center">
-      <h2 className="text-3xl font-bold text-indigo-700 mb-6">Crear Nuevo Libro</h2>
-      <LibroForm onAdd={handleAgregar} />
-    </section>
+    <div className="flex justify-center p-4">
+      <div className="bg-white shadow-xl rounded-lg p-8 max-w-md w-full">
+        <h1 className="text-3xl font-bold text-indigo-800 mb-6 text-center">Agregar Nuevo Libro</h1>
+        <LibroForm onAdd={handleAdd} modo="crear" />
+      </div>
+    </div>
   );
 }
 

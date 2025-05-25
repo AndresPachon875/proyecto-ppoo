@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 public class Libro {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -12,10 +13,20 @@ public class Libro {
     private String autor;
     private int anio;
     private String portada;
+    private String descripcion; // ¡Nuevo campo!
 
-    // Getters y Setters
+    public Libro() {
+    }
 
+    public Libro(String titulo, String autor, int anio, String portada, String descripcion) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.anio = anio;
+        this.portada = portada;
+        this.descripcion = descripcion; // Inicializa el nuevo campo
+    }
 
+    //  Getters y Setters
     public Long getId() {
         return id;
     }
@@ -51,10 +62,28 @@ public class Libro {
     public String getPortada() {
         return portada;
     }
-    
+
     public void setPortada(String portada) {
         this.portada = portada;
     }
-    
-}
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    @Override
+    public String toString() {
+        return "Libro{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", autor='" + autor + '\'' +
+                ", anio=" + anio +
+                ", portada='" + portada + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                '}';
+    }
+}

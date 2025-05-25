@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 
 function LibroForm({ onAdd, libroInicial = null, modo = "crear" }) {
   const [libro, setLibro] = useState({
+    id: null, 
     titulo: '',
     autor: '',
     anio: '',
     descripcion: '',
-    portada: null
+    portadaFile: null 
   });
 
   const [vistaPrevia, setVistaPrevia] = useState(null);
@@ -14,30 +15,45 @@ function LibroForm({ onAdd, libroInicial = null, modo = "crear" }) {
   useEffect(() => {
     if (libroInicial) {
       setLibro({
+        id: libroInicial.id, 
         titulo: libroInicial.titulo || '',
         autor: libroInicial.autor || '',
         anio: libroInicial.anio || '',
         descripcion: libroInicial.descripcion || '',
-        portada: null // no cargamos archivo, solo permitimos cambiar
+        portadaFile: null 
       });
+      
       if (libroInicial.portada) {
-        setVistaPrevia(`http://localhost:8080/${libroInicial.portada}`);
+        setVistaPrevia(`http://localhost:8080/uploads/${libroInicial.portada}`);
+      } else {
+        setVistaPrevia(null);
       }
+    } else {
+      
+      setLibro({
+        id: null,
+        titulo: '',
+        autor: '',
+        anio: '',
+        descripcion: '',
+        portadaFile: null
+      });
+      setVistaPrevia(null);
     }
   }, [libroInicial]);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    if (name === "portada") {
+    if (name === "portadaFile") { 
       const archivo = files[0];
-      setLibro({ ...libro, portada: archivo });
+      setLibro({ ...libro, portadaFile: archivo }); 
 
       if (archivo) {
         const reader = new FileReader();
         reader.onloadend = () => setVistaPrevia(reader.result);
         reader.readAsDataURL(archivo);
       } else {
-        setVistaPrevia(null);
+        setVistaPrevia(libroInicial && libroInicial.portada ? `http://localhost:8080/uploads/${libroInicial.portada}` : null);
       }
     } else {
       setLibro({ ...libro, [name]: value });
@@ -47,6 +63,10 @@ function LibroForm({ onAdd, libroInicial = null, modo = "crear" }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onAdd(libro);
+    if (modo === "crear") {
+      setLibro({ titulo: '', autor: '', anio: '', descripcion: '', portadaFile: null });
+      setVistaPrevia(null);
+    }
   };
 
   return (
@@ -77,14 +97,14 @@ function LibroForm({ onAdd, libroInicial = null, modo = "crear" }) {
         required
       />
       <textarea
-        name="descripcion"
+        name="descripcion" 
         placeholder="Descripción"
         value={libro.descripcion}
         onChange={handleChange}
         className="border border-indigo-300 p-2 w-full rounded"
       />
       <input
-        name="portada"
+        name="portadaFile" 
         type="file"
         accept="image/*"
         onChange={handleChange}
