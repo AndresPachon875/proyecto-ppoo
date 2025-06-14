@@ -72,7 +72,7 @@ function LibroForm({ onAdd, libroInicial = null, modo = "crear" }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 bg-white shadow p-6 rounded-md">
+    <form onSubmit={handleSubmit} className="space-y-4 bg-indigo-400 shadow p-6 rounded-md w-lg">
       <input
         name="titulo"
         placeholder="Título"
@@ -118,9 +118,11 @@ function LibroForm({ onAdd, libroInicial = null, modo = "crear" }) {
           <img src={vistaPrevia} alt="Vista previa" className="max-w-[200px] border mt-1" />
         </div>
       )}
-      <button type="submit" className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded">
+      <div className="flex w-full justify-center items-center">
+        <button type="submit" className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded">
         {modo === "editar" ? "Actualizar" : "Agregar"}
       </button>
+      </div>
     </form>
   );
 }

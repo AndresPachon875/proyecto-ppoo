@@ -24,6 +24,9 @@ public class LibroController {
         this.libroService = libroService;
     }
 
+    // ========== MÉTODOS GET (ordenados por especificidad) ==========
+
+    // 1. Listar todos los libros (ruta base)
     @GetMapping
     public ResponseEntity<List<Libro>> listarLibros() {
         List<Libro> libros = libroService.obtenerTodosLosLibros();
