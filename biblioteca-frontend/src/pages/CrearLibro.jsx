@@ -13,7 +13,7 @@ function CrearLibro() {
 
   return (
     <div className="flex justify-center p-4">
-      <div className="bg-white shadow-xl rounded-lg p-8 max-w-md w-full">
+      <div className="bg-white shadow-xl rounded-lg p-8">
         <h1 className="text-3xl font-bold text-indigo-800 mb-6 text-center">Agregar Nuevo Libro</h1>
         <LibroForm onAdd={handleAdd} modo="crear" />
       </div>
