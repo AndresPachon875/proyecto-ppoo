@@ -1,7 +1,7 @@
 function LibroItem({ libro, onEdit, onDelete }) {
   const { titulo, autor, anio, descripcion, portada } = libro;
 
-  const BASE_URL_BACKEND = 'http://localhost:8080'; 
+  const BASE_URL_BACKEND = 'http://localhost:8080';
 
   return (
     <div className="bg-indigo-100 shadow-lg rounded-lg p-4 w-full max-w-md mx-auto space-y-2">
@@ -14,13 +14,13 @@ function LibroItem({ libro, onEdit, onDelete }) {
       )}
       <div className="flex justify-end gap-2 mt-2">
         <button
-          onClick={() => onEdit(libro)} 
+          onClick={() => onEdit(libro)}
           className="bg-blue-700 text-white px-4 py-1 rounded hover:bg-blue-800"
         >
           Editar
         </button>
         <button
-          onClick={() => onDelete(libro)} 
+          onClick={() => onDelete(libro)}
           className="bg-red-700 text-white px-4 py-1 rounded hover:bg-red-800"
         >
           Eliminar

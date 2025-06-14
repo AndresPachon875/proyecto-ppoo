@@ -13,7 +13,7 @@ public class Libro {
     private String autor;
     private int anio;
     private String portada;
-    private String descripcion; // ¡Nuevo campo!
+    private String descripcion;
 
     public Libro() {
     }
@@ -23,7 +23,7 @@ public class Libro {
         this.autor = autor;
         this.anio = anio;
         this.portada = portada;
-        this.descripcion = descripcion; // Inicializa el nuevo campo
+        this.descripcion = descripcion;
     }
 
     //  Getters y Setters

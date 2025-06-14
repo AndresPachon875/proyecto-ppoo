@@ -10,27 +10,26 @@ import {
 export function useLibros() {
   const [libros, setLibros] = useState([]) 
   const [busqueda, setBusqueda] = useState('') 
-  
 
   useEffect(() => {
     cargarLibros() 
-  }, [])
+  }, []) 
+
   const cargarLibros = async () => {
     try {
       const res = await getLibros() 
       setLibros(res.data) 
     } catch (error) {
       console.error("Error al cargar libros:", error); 
-      
     }
   }
 
   const buscar = async (texto) => {
     setBusqueda(texto) 
-    if (texto === '') return cargarLibros() 
+    if (texto === '') return cargarLibros()
     try {
       const res = await buscarLibros(texto) 
-      setLibros(res.data) 
+      setLibros(res.data)
     } catch (error) {
       console.error("Error al buscar libros:", error);
     }
@@ -43,7 +42,6 @@ export function useLibros() {
       cargarLibros() 
     } catch (error) {
       console.error("Error al agregar libro:", error);
-      
     }
   }
 
@@ -62,11 +60,11 @@ export function useLibros() {
 
     const confirmar = confirm(`¿Eliminar el libro "${libro.titulo}"?`) 
     console.log(confirmar) 
-    if (!confirmar) return 
+    if (!confirmar) return
 
     try {
       await deleteLibro(libro.id) 
-      cargarLibros() 
+      cargarLibros()
     } catch (error) {
       console.error("Error al eliminar libro:", error);
     }
@@ -78,6 +76,6 @@ export function useLibros() {
     buscar, 
     agregarLibro, 
     editarLibro, 
-    eliminarLibro 
+    eliminarLibro
   }
 }

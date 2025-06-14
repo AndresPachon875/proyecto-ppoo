@@ -6,7 +6,7 @@ public class LibroDTO {
     private String titulo;
     private String autor;
     private int anio;
-    private String descripcion; // ¡Nuevo campo!
+    private String descripcion;
     private MultipartFile portadaFile;
 
     public LibroDTO() {
@@ -17,7 +17,7 @@ public class LibroDTO {
         this.titulo = titulo;
         this.autor = autor;
         this.anio = anio;
-        this.descripcion = descripcion; // Inicializa el nuevo campo
+        this.descripcion = descripcion;
         this.portadaFile = portadaFile;
     }
 

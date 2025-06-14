@@ -5,25 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e75259a-0afb-4a9a-a0d8-342c2569249e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/dto/LibroDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/service/LibroService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/service/LibroServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioteca-backend/biblioteca/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-backend/biblioteca/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/config/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/controller/LibroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/controller/LibroController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/controller/portadaController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/dto/LibroDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/dto/LibroDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/model/Libro.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/model/Libro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/repository/LibroRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/repository/LibroRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioteca-frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-frontend/src/App.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biblioteca-frontend/src/api/libros.js" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-frontend/src/api/libros.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biblioteca-frontend/src/components/LibroForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-frontend/src/components/LibroForm.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biblioteca-frontend/src/components/LibroItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-frontend/src/components/LibroItem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioteca-frontend/src/components/LibroList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-frontend/src/components/LibroList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biblioteca-frontend/src/hooks/UseLibro.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-frontend/src/hooks/UseLibro.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioteca-frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-frontend/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biblioteca-frontend/src/pages/CrearLibro.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-frontend/src/pages/CrearLibro.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioteca-frontend/src/pages/EditarLibroPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-frontend/src/pages/EditarLibroPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biblioteca-frontend/src/pages/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-frontend/src/pages/Home.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +50,7 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;julian2&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/ajpac/OneDrive/Desktop/Proyecto_PPOO&quot;
   }

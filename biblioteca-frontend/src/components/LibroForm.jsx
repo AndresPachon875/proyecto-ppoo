@@ -24,12 +24,13 @@ function LibroForm({ onAdd, libroInicial = null, modo = "crear" }) {
       });
       
       if (libroInicial.portada) {
+        
         setVistaPrevia(`http://localhost:8080/uploads/${libroInicial.portada}`);
       } else {
         setVistaPrevia(null);
       }
     } else {
-      
+
       setLibro({
         id: null,
         titulo: '',
@@ -46,7 +47,7 @@ function LibroForm({ onAdd, libroInicial = null, modo = "crear" }) {
     const { name, value, files } = e.target;
     if (name === "portadaFile") { 
       const archivo = files[0];
-      setLibro({ ...libro, portadaFile: archivo }); 
+      setLibro({ ...libro, portadaFile: archivo });
 
       if (archivo) {
         const reader = new FileReader();
@@ -62,6 +63,7 @@ function LibroForm({ onAdd, libroInicial = null, modo = "crear" }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     onAdd(libro);
     if (modo === "crear") {
       setLibro({ titulo: '', autor: '', anio: '', descripcion: '', portadaFile: null });
