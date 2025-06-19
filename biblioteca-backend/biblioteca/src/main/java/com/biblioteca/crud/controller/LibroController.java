@@ -1,5 +1,4 @@
 package com.biblioteca.crud.controller;
-
 import com.biblioteca.crud.dto.LibroDTO;
 import com.biblioteca.crud.model.Libro;
 import com.biblioteca.crud.service.LibroService;
@@ -7,10 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:5173")
@@ -24,9 +21,6 @@ public class LibroController {
         this.libroService = libroService;
     }
 
-    // ========== MÉTODOS GET (ordenados por especificidad) ==========
-
-    // 1. Listar todos los libros (ruta base)
     @GetMapping
     public ResponseEntity<List<Libro>> listarLibros() {
         List<Libro> libros = libroService.obtenerTodosLosLibros();
@@ -37,19 +31,21 @@ public class LibroController {
     public ResponseEntity<Libro> obtenerLibroPorId(@PathVariable Long id) {
         Optional<Libro> libro = libroService.obtenerLibroPorId(id);
         return libro.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Libro no encontrado con ID: " + id));
+                .orElseThrow(
+                        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Libro no encontrado con ID: " + id));
     }
 
     @PostMapping(consumes = "multipart/form-data")
     public ResponseEntity<Libro> agregarLibro(@ModelAttribute LibroDTO libroDTO) {
         try {
             Libro nuevoLibro = libroService.guardarLibro(
-                    new Libro(libroDTO.getTitulo(), libroDTO.getAutor(), libroDTO.getAnio(), null, libroDTO.getDescripcion()),
-                    libroDTO.getPortadaFile()
-            );
+                    new Libro(libroDTO.getTitulo(), libroDTO.getAutor(), libroDTO.getAnio(), null,
+                            libroDTO.getDescripcion()),
+                    libroDTO.getPortadaFile());
             return new ResponseEntity<>(nuevoLibro, HttpStatus.CREATED);
         } catch (IOException e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error al guardar la portada: " + e.getMessage());
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
+                    "Error al guardar la portada: " + e.getMessage());
         }
     }
 
@@ -57,9 +53,9 @@ public class LibroController {
     public ResponseEntity<Libro> actualizarLibro(@PathVariable Long id, @ModelAttribute LibroDTO libroDTO) {
         try {
             Libro libroActualizado = libroService.actualizarLibro(id,
-                    new Libro(libroDTO.getTitulo(), libroDTO.getAutor(), libroDTO.getAnio(), null, libroDTO.getDescripcion()),
-                    libroDTO.getPortadaFile()
-            );
+                    new Libro(libroDTO.getTitulo(), libroDTO.getAutor(), libroDTO.getAnio(), null,
+                            libroDTO.getDescripcion()),
+                    libroDTO.getPortadaFile());
 
             if (libroActualizado != null) {
                 return new ResponseEntity<>(libroActualizado, HttpStatus.OK);
@@ -67,7 +63,8 @@ public class LibroController {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Libro no encontrado con ID: " + id);
             }
         } catch (IOException e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error al actualizar la portada: " + e.getMessage());
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
+                    "Error al actualizar la portada: " + e.getMessage());
         }
     }
 

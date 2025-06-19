@@ -71,7 +71,7 @@ public class LibroServiceImpl implements LibroService {
             libroExistente.setTitulo(libroDetails.getTitulo());
             libroExistente.setAutor(libroDetails.getAutor());
             libroExistente.setAnio(libroDetails.getAnio());
-            libroExistente.setDescripcion(libroDetails.getDescripcion()); // ¡Actualiza la descripción!
+            libroExistente.setDescripcion(libroDetails.getDescripcion()); 
 
             if (portadaFile != null && !portadaFile.isEmpty()) {
                 String nombreArchivo = System.currentTimeMillis() + "_" + portadaFile.getOriginalFilename();

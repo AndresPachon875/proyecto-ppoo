@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e75259a-0afb-4a9a-a0d8-342c2569249e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/controller/LibroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/controller/LibroController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/dto/LibroDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/dto/LibroDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/model/Libro.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-backend/biblioteca/src/main/java/com/biblioteca/crud/model/Libro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioteca-frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioteca-frontend/src/api/libros.js" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-frontend/src/api/libros.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioteca-frontend/src/components/LibroForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-frontend/src/components/LibroForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioteca-frontend/src/components/LibroItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-frontend/src/components/LibroItem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioteca-frontend/src/hooks/UseLibro.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-frontend/src/hooks/UseLibro.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioteca-frontend/src/pages/CrearLibro.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-frontend/src/pages/CrearLibro.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioteca-frontend/src/pages/EditarLibroPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-frontend/src/pages/EditarLibroPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioteca-frontend/src/pages/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca-frontend/src/pages/Home.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="5e75259a-0afb-4a9a-a0d8-342c2569249e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,18 +29,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.GptApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.bibliotecaApplication.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;julian2&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ajpac/OneDrive/Desktop/Proyecto_PPOO&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.GptApplication.executor": "Run",
+    "Application.bibliotecaApplication.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/ajpac/OneDrive/Desktop/Proyecto_PPOO"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.biblioteca.crud.model" />
